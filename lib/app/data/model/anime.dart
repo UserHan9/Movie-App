@@ -1,3 +1,7 @@
+import 'package:hive/hive.dart';
+
+part 'anime.g.dart';
+
 class TopAnimeResponse {
   final List<Anime> data;
 
@@ -12,15 +16,31 @@ class TopAnimeResponse {
   }
 }
 
-class Anime {
+@HiveType(typeId: 0)
+class Anime extends HiveObject {
+  @HiveField(0)
+  final int malId; // ID unik anime
+
+  @HiveField(1)
   final String title;
+
+  @HiveField(2)
   final String type;
+
+  @HiveField(3)
   final int? episodes;
+
+  @HiveField(4)
   final double? score;
+
+  @HiveField(5)
   final int rank;
+
+  @HiveField(6)
   final String imageUrl;
 
   Anime({
+    required this.malId,
     required this.title,
     required this.type,
     this.episodes,
@@ -31,6 +51,7 @@ class Anime {
 
   factory Anime.fromJson(Map<String, dynamic> json) {
     return Anime(
+      malId: json['mal_id'], // ⭐ PENTING
       title: json['title']?.toString() ?? 'No Title',
       type: json['type']?.toString() ?? '-',
       episodes: json['episodes'],
