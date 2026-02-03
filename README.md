@@ -1,4 +1,4 @@
-# Movie Apps
+# Anime Apps
 **Flutter**, **GetX**, And **Hive**.
 
 ![Img Alt](https://github.com/UserHan9/Movie-App/blob/main/Preview.png?raw=true)
